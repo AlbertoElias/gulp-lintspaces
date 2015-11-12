@@ -1,0 +1,49 @@
+{
+  "name": "gulp-lintspaces",
+  "version": "0.3.0",
+  "description": "gulp plugin for lintspaces",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ck86/gulp-lintspaces.git"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "keywords": [
+    "gulpplugin",
+    "validation",
+    "lint",
+    "spaces",
+    "trailingspaces",
+    "indent",
+    "indentation",
+    "newlines",
+    "eof",
+    "eol"
+  ],
+  "author": "Christopher Knötschke <cknoetschke@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "gulp-util": "^2.2.14",
+    "event-stream": "^3.1.1",
+    "lintspaces": "^0.3.2"
+  },
+  "devDependencies": {
+    "should": "^3.2.0",
+    "map-stream": "^0.1.0",
+    "mocha": "^1.18.2",
+    "gulp-mocha": "^0.4.1",
+    "gulp-jscs": "^0.4.0",
+    "gulp-jshint": "^1.5.3",
+    "gulp": "^3.6.0",
+    "gulp-clean": "^0.2.4",
+    "gulp-concat": "^2.2.0"
+  },
+  "bugs": {
+    "url": "https://github.com/ck86/gulp-lintspaces/issues"
+  },
+  "maintainers": [
+    "Alberto Elias <me@alberto-elias.com>"
+  ]
+}
