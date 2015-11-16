@@ -35,7 +35,7 @@ module.exports.reporter = function() {
 					console.error(
 						'[%s] %s in (%s:%d)\n',
 						colors.green('gulp-lintspaces'),
-						colors.red(error),
+						colors.red(error.message),
 						file.path,
 						line
 					);
