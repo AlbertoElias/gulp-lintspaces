@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ck86/gulp-lintspaces.git"
+    "url": "git+https://github.com/AlbertoElias/gulp-lintspaces.git"
   },
   "scripts": {
     "test": "make test"
@@ -36,12 +36,10 @@
     "gulp-mocha": "^0.4.1",
     "gulp-jscs": "^0.4.0",
     "gulp-jshint": "^1.5.3",
-    "gulp": "^3.6.0",
-    "gulp-clean": "^0.2.4",
-    "gulp-concat": "^2.2.0"
+    "gulp": "^3.6.0"
   },
   "bugs": {
-    "url": "https://github.com/ck86/gulp-lintspaces/issues"
+    "url": "https://github.com/AlbertoElias/gulp-lintspaces/issues"
   },
   "maintainers": [
     "Alberto Elias <me@alberto-elias.com>"

@@ -2,8 +2,6 @@ var
 	util = require('util'),
 	gulp = require('gulp'),
 	colors = require('gulp-util').colors,
-	concat = require('gulp-concat'),
-	clean = require('gulp-clean'),
 	jshint = require('gulp-jshint'),
 	jscs = require('gulp-jscs'),
 	map = require('map-stream'),
@@ -26,28 +24,6 @@ gulp.task('lint', function() {
 			cb(null, file);
 		}))
 		.pipe(jscs(__dirname + '/.jscs.json'));
-});
-
-gulp.task('readme-clean', function() {
-	gulp
-		.src([
-			'./README.md'
-		], {read: false})
-		.pipe(clean());
-});
-
-gulp.task('readme', ['readme-clean'], function() {
-	gulp
-		.src([
-			'./docs/intro.md',
-			'./docs/installation.md',
-			'./docs/usage.md',
-			'./node_modules/lintspaces/docs/options.md',
-			'./docs/contribution.md',
-			'./docs/license.md'
-		])
-		.pipe(concat('README.md'))
-		.pipe(gulp.dest('.'));
 });
 
 gulp.task('default', ['lint'], function() {

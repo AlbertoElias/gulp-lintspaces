@@ -22,8 +22,5 @@ lib-cov:
 clean:
 	rm -fr lib-cov
 
-readme:
-	@./node_modules/.bin/gulp readme
-
 push: test
 	@git push origin $(BRANCH)

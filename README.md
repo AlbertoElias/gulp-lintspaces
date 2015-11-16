@@ -139,14 +139,8 @@ you offer a pull request.
 
 Run ```make test``` to run the tests and validation tasks.
 
-### Readme
-
-The readme chapters are located in the _docs_ directory as Markdown. All
-Markdown files will be concatenated through a gulp task ```'readme'```. Call
-```gulp readme``` or ```make readme``` to update the _README.md_.
-
-**Note: ** Do not edit the _README.md_ directly, it will be overwritten!
-
 ## License
 
-[LICENSE (MIT)](https://github.com/ck86/gulp-lintspaces/blob/master/LICENSE)
+This is a fork of the original `gulp-lintspaces` by [@ck86](https://github.com/ck86) which was deleted from Github and npm.
+
+[LICENSE (MIT)](https://github.com/AlbertoElias/gulp-lintspaces/blob/master/LICENSE)
