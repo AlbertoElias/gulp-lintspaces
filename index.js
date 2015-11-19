@@ -36,7 +36,7 @@ module.exports.reporter = function() {
 					log(
 						'gulp-lintspaces',
 						[
-							gutil.colors.red(error.message),
+							colors.red(error.message),
 							'in',
 							file.path + ':' + line
 						].join(' ')
