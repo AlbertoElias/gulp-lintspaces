@@ -1,9 +1,11 @@
 var
-	es          = require('event-stream'),
-	Lintspaces  = require('lintspaces'),
-	PluginError = require('gulp-util').PluginError,
-	log         = require('gulp-util').log,
-	colors      = require('gulp-util').colors
+	es		= require('event-stream'),
+	Lintspaces	= require('lintspaces'),
+	gutil		= require('gulp-util'),
+	path		= require('path'),
+	appRoot		= require('app-root-path'),
+	colors		= require('colors/safe'),
+	logSymbols	= require('log-symbols')
 ;
 
 module.exports = function(options) {
@@ -24,31 +26,57 @@ module.exports = function(options) {
 	});
 };
 
-module.exports.reporter = function() {
-	return es.through(function(file) {
+module.exports.reporter = function(options) {
+	var opts = {
+		breakOnWarning: false,
+		prefixLogs: false
+	};
+	for (var attr in options) { opts[attr] = options[attr]; }
+	var totalWarningCount = 0;
+	var logPrefix = options.prefixLogs ? colors.cyan('[gulp-lintspaces]\t') : '';
+
+	function reportFile (filepath, data) {
+		var lines = [];
+		var warningLines = Object.keys(data);
+		var warningCount = Object.keys(data).length;
+
+		// Report Filename
+		lines.push(colors.white.bold.underline(path.relative(appRoot.path, filepath)));
+		// Loop through and report warnings
+		warningLines.forEach(function (warningLine) {
+			var line = colors.grey('  line ' + data[warningLine][0].line) + '\t\t  ' + colors.cyan(data[warningLine][0].message);
+			lines.push(line);
+		});
+		lines.push('');
+		lines.push('  ' + logSymbols.info + ' ' + colors.blue(warningCount + ' whitespace warning' + (warningCount !== 1 ? 's' : '')));
+		lines = lines.map(function(line) { return logPrefix + line; });
+
+		return lines.join('\n') + '\n';
+	}
+
+	// Add report summary
+	function reportSummary () {
+		if (totalWarningCount !== 0) {
+			console.log(logPrefix + logSymbols.info + colors.blue(' ' + totalWarningCount + ' whitespace warning' + (totalWarningCount !== 1 ? 's' : '') + '\n'));
+		}
+	}
+
+	return es.through(function (file) {
 		if (file.isNull()) {
 			return this.emit('data', file);
 		}
 
+		// Report file specific stuff only when there are warnings
 		if (file.lintspaces && Object.keys(file.lintspaces).length) {
-			for (var line in file.lintspaces) {
-				file.lintspaces[line].forEach(function(error) {
-					log(
-						'gulp-lintspaces',
-						[
-							colors.red(error.message),
-							'in',
-							file.path + ':' + line
-						].join(' ')
-					);
-				});
-			}
+			totalWarningCount += Object.keys(file.lintspaces).length;
+			console.log(reportFile(file.path, file.lintspaces));
 		}
-
-		if (Object.keys(file.lintspaces).length) {
-			this.emit('error', new PluginError("gulp-lintspaces", "Found spacing errors"));
-		}
-
 		return this.emit('data', file);
+	})
+	.on('end', function () {
+		reportSummary();
+		if (totalWarningCount && options.breakOnWarning) {
+			this.emit('error', new gutil.PluginError('gulp-lintspaces', 'Linter warnings occurred!'));
+		}
 	});
-}
+};
