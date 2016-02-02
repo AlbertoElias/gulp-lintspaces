@@ -33,7 +33,7 @@ module.exports.reporter = function(options) {
 	};
 	for (var attr in options) { opts[attr] = options[attr]; }
 	var totalWarningCount = 0;
-	var logPrefix = options.prefixLogs ? colors.cyan('[gulp-lintspaces]\t') : '';
+	var logPrefix = opts.prefixLogs ? colors.cyan('[gulp-lintspaces]\t') : '';
 
 	function reportFile (filepath, data) {
 		var lines = [];
@@ -75,7 +75,7 @@ module.exports.reporter = function(options) {
 	})
 	.on('end', function () {
 		reportSummary();
-		if (totalWarningCount && options.breakOnWarning) {
+		if (totalWarningCount && opts.breakOnWarning) {
 			this.emit('error', new gutil.PluginError('gulp-lintspaces', 'Linter warnings occurred!'));
 		}
 	});
