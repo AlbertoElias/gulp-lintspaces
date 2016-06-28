@@ -11,10 +11,10 @@ files, take a look at this one:
 ## Installation
 
 This package is available on [npm](https://www.npmjs.org/package/gulp-lintspaces)
-as: `gulp-lintspaces`
+as: `gulp-lintspaces-bolighed`
 
 ``` sh
-	npm install gulp-lintspaces
+	npm install gulp-lintspaces-bolighed
 ```
 
 ## Usage

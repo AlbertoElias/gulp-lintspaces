@@ -1,6 +1,6 @@
 {
-  "name": "gulp-lintspaces",
-  "version": "0.4.1",
+  "name": "gulp-lintspaces-bolighed",
+  "version": "0.5.0",
   "description": "gulp plugin for lintspaces",
   "main": "index.js",
   "repository": {
