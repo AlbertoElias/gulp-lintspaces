@@ -1,6 +1,8 @@
 gulp-lintspaces
 ===============
 
+** This project is not actively maintained **
+
 A thin wrapper of [lintspaces](https://github.com/schorfES/node-lintspaces)
 
 If you're looking for a [gruntjs](http://gruntjs.com/) task to validate your
