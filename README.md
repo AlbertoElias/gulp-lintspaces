@@ -1,7 +1,7 @@
 gulp-lintspaces
 ===============
 
-** This project is not actively maintained **
+**This project is not actively maintained**
 
 A thin wrapper of [lintspaces](https://github.com/schorfES/node-lintspaces)
 
