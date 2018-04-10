@@ -1,10 +1,10 @@
 var
-	util = require('util'),
-	gulp = require('gulp'),
-	colors = require('gulp-util').colors,
+	util   = require('util'),
+	gulp   = require('gulp'),
+	colors = require('ansi-colors'),
 	jshint = require('gulp-jshint'),
-	jscs = require('gulp-jscs'),
-	map = require('map-stream'),
+	jscs   = require('gulp-jscs'),
+	map    = require('map-stream'),
 	jshintErrors = []
 ;
 
