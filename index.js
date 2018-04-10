@@ -1,7 +1,7 @@
 var
 	es		= require('event-stream'),
 	Lintspaces	= require('lintspaces'),
-	gutil		= require('gulp-util'),
+	PluginError     = require('plugin-error'),
 	path		= require('path'),
 	appRoot		= require('app-root-path'),
 	colors		= require('colors/safe'),
@@ -76,7 +76,7 @@ module.exports.reporter = function(options) {
 	.on('end', function () {
 		reportSummary();
 		if (totalWarningCount && opts.breakOnWarning) {
-			this.emit('error', new gutil.PluginError('gulp-lintspaces', 'Linter warnings occurred!'));
+			this.emit('error', new PluginError('gulp-lintspaces', 'Linter warnings occurred!'));
 		}
 	});
 };
